@@ -7,6 +7,9 @@ buildscript {
     ext.lifecycleVersion = '2.1.0'
     ext.dagger2Version = '2.15'
     ext.roomVersion = '2.2.3'
+    ext.rxJavaAdapterVersion = "2.3.0"
+    ext.rxAndroidVersion = "2.0.2"
+    ext.rxJava2Version = "2.1.0"
 
     repositories {
         google()
