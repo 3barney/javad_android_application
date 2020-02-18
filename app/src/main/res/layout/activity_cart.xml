@@ -84,8 +84,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:elevation="2dp"
-            android:backgroundTint="@android:color/white"
-            android:textColor="@color/colorPrimary"
+            android:backgroundTint="@color/colorAccent"
+            android:textColor="@android:color/white"
             android:text="CHECKOUT"
             android:textSize="18sp"
             android:layout_height="wrap_content" />
