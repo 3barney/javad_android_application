@@ -84,9 +84,17 @@ class CartActivity : AppCompatActivity() {
                 adapter = CartAdapter(this@CartActivity, cartItems!!, cartViewModel)
                 adapter!!.notifyDataSetChanged()
             }
+            totals_textView.text = "Totals: ".plus(getTotalsAmount().toString())
         } else {
             empty_cart.visibility = View.VISIBLE
             cart_recyclerview.visibility = View.GONE
         }
+    }
+
+    private fun getTotalsAmount(): Int {
+        val totals = cartItems!!
+            .map { it.quantity.times(it.price) }
+            .sum();
+        return totals;
     }
 }
