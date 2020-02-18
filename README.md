@@ -72,7 +72,7 @@ To run the application ensure mobile device is connected.
 
         Navigate to root of project.
         If using linux or mac execute
-            ```./gradlew installDebug```
+            ./gradlew installDebug
         on windows
-            ```gradlew installDebug```
+            gradlew installDebug
 
