@@ -12,6 +12,5 @@ import javax.inject.Singleton
     modules = arrayOf(AndroidInjectionModule::class, AppModule::class, BuilderModule::class)
 )
 interface AppComponent {
-
     fun inject(app : MainApplication)
 }

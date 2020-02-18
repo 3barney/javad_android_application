@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.room.Room
 import com.jomo.productecommerce.data.source.CartDao
 import com.jomo.productecommerce.data.source.Database
+import com.jomo.productecommerce.ui.view_models.CartViewModelFactory
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -28,7 +29,7 @@ class AppModule(val app: Application) {
     @Singleton
     fun provideCartDao(database: Database): CartDao = database.cartDao()
 
-//    @Provides
-//    fun providesCartViewModelFactory(factory: CartViewModelFactory):
-//            ViewModelProvider.Factory = factory
+    @Provides
+    fun providesCartViewModelFactory(factory: CartViewModelFactory):
+            ViewModelProvider.Factory = factory
 }

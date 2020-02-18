@@ -1,9 +1,6 @@
 package com.jomo.productecommerce.data.source
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.jomo.productecommerce.data.model.Cart
 import io.reactivex.Single
 
@@ -16,5 +13,13 @@ interface CartDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertCartItem(cart: Cart)
 
-    // TODO: Update and delete
+    @Update
+    fun updateCartItem(cart: Cart)
+
+    @Delete
+    fun deleteCartItem(cart: Cart)
+
+    @Query("SELECT * FROM cart WHERE name LIKE :search")
+    fun findCartItemWithName(search: String): Cart
+
 }

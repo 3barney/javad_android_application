@@ -16,3 +16,11 @@ class ProductView {
     var price: Int? = null
     var img: Drawable? = null
 }
+
+class CartModel {
+    var img: Drawable? = null
+    var name: String? = null
+    var quantity: Int? = null
+    var price: Int? = null
+    var total: Int? = null
+}

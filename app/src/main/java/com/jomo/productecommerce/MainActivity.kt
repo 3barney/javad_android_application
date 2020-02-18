@@ -1,34 +1,52 @@
 package com.jomo.productecommerce
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.jomo.productecommerce.data.model.Product
 import com.jomo.productecommerce.ui.adapter.ProductAdapter
+import com.jomo.productecommerce.ui.view_models.CartViewModel
+import com.jomo.productecommerce.ui.view_models.CartViewModelFactory
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
-    private val productListItem = formatProductItems();
+    @Inject
+    lateinit var cartViewModelFactory: CartViewModelFactory
+    lateinit var cartViewModel: CartViewModel
+    lateinit var productListItem: List<Product>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        productListItem = formatProductItems();
+
         AndroidInjection.inject(this)
+
+        setSupportActionBar(toolbar)
+
+        cartViewModel = ViewModelProviders.of(this, cartViewModelFactory)
+            .get(CartViewModel::class.java)
     }
 
     override fun onStart() {
         super.onStart()
         setProductsView();
+
+        showCart.setOnClickListener {
+            startActivity(Intent(this, CartActivity::class.java))
+        }
     }
 
     private fun setProductsView() {
         products_recyclerview.apply {
             layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-            adapter = ProductAdapter(this@MainActivity, productListItem)
+            adapter = ProductAdapter(this@MainActivity, productListItem, cartViewModel)
             adapter!!.notifyDataSetChanged()
         }
     }
@@ -77,5 +95,4 @@ class MainActivity : AppCompatActivity() {
             )
         );
     }
-
 }

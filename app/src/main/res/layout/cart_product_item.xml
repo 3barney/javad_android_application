@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="data"
+            type="com.jomo.productecommerce.data.model.CartModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:padding="8dp"
+        android:id="@+id/card_view"
+        android:elevation="1.5dp"
+        app:cardUseCompatPadding="true"
+        android:layout_margin="2dp"
+        app:cardCornerRadius="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="160dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:id="@+id/product_image"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:src="@{data.img}"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="160dp" />
+
+            <TextView
+                app:layout_constraintLeft_toLeftOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:id="@+id/product_name"
+                android:gravity="start"
+                android:text="@{`Name: ` + data.name}"
+                android:padding="10dp"
+                android:layout_marginLeft="8dp"
+                android:lines="1"
+                android:ellipsize="end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                app:layout_constraintLeft_toLeftOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/product_name"
+                app:layout_constraintRight_toRightOf="parent"
+                android:gravity="start"
+                android:layout_marginLeft="8dp"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:layout_marginBottom="10dp"
+                android:padding="5dp"
+                android:id="@+id/product_price"
+                android:text="@{`Price: ` + String.valueOf(data.price)}"
+                android:lines="1"
+                android:ellipsize="end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/product_quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/round_grey_background"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:padding="10dp"
+                android:text="@{String.valueOf(data.quantity)}"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="@+id/guideline" />
+
+            <ImageButton
+                app:layout_constraintEnd_toStartOf="@+id/increaseQuantity"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginRight="8dp"
+                android:padding="16dp"
+                android:id="@+id/decreaseQuantity"
+                android:tint="@android:color/white"
+                android:paddingVertical="10dp"
+                android:src="@drawable/ic_remove_shopping_cart"
+                android:layout_gravity="end"
+                android:background="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:padding="16dp"
+                android:id="@+id/increaseQuantity"
+                android:tint="@android:color/white"
+                android:paddingVertical="10dp"
+                android:src="@drawable/ic_add_shopping"
+                android:layout_gravity="end"
+                android:background="@color/colorAccent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -10,7 +10,7 @@ import com.jomo.productecommerce.R
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
 
-class ProductViewModel(context: Context, imageUrl: String) {
+class PicassoImageViewModel(context: Context, imageUrl: String) {
 
     var IMAGE_URL: String? = null
     var productImage: ObservableField<Drawable>? = null
@@ -21,7 +21,7 @@ class ProductViewModel(context: Context, imageUrl: String) {
         productImage = ObservableField<Drawable>()
 
         bindableFieldTarget = BindableFieldTarget(productImage!!, context.resources)
-        Picasso.with(context).load(IMAGE_URL).placeholder(R.drawable.ic_launcher_background).into(bindableFieldTarget)
+        Picasso.with(context).load(imageUrl).placeholder(R.drawable.ic_launcher_background).into(bindableFieldTarget)
     }
 
     inner class BindableFieldTarget(private val observableField: ObservableField<Drawable>, private val resources: Resources): Target {
