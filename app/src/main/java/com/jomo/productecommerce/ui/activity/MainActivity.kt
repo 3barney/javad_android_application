@@ -1,10 +1,11 @@
-package com.jomo.productecommerce
+package com.jomo.productecommerce.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.jomo.productecommerce.R
 import com.jomo.productecommerce.data.model.Product
 import com.jomo.productecommerce.ui.adapter.ProductAdapter
 import com.jomo.productecommerce.ui.view_models.CartViewModel

@@ -1,4 +1,4 @@
-package com.jomo.productecommerce
+package com.jomo.productecommerce.ui.activity
 
 import android.graphics.PorterDuff
 import android.os.Bundle
@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.jomo.productecommerce.R
 import com.jomo.productecommerce.data.model.Cart
 import com.jomo.productecommerce.ui.adapter.CartAdapter
 import com.jomo.productecommerce.ui.view_models.CartViewModel
@@ -20,7 +21,7 @@ import kotlinx.android.synthetic.main.activity_cart.*
 class CartActivity : AppCompatActivity() {
 
     @Inject
-    private lateinit var cartViewModelFactory: CartViewModelFactory
+    lateinit var cartViewModelFactory: CartViewModelFactory
     private lateinit var cartViewModel: CartViewModel
     private var cartItems: List<Cart>? = null
 
@@ -36,9 +37,13 @@ class CartActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val upArrow = ContextCompat.getDrawable(this, R.drawable.abc_ic_ab_back_material)
+        val upArrow = ContextCompat.getDrawable(this,
+            R.drawable.abc_ic_ab_back_material
+        )
         upArrow?.setColorFilter(
-            ContextCompat.getColor(this, R.color.colorPrimary),
+            ContextCompat.getColor(this,
+                R.color.colorPrimary
+            ),
             PorterDuff.Mode.SRC_ATOP
         )
         supportActionBar?.setHomeAsUpIndicator(upArrow)
@@ -65,7 +70,7 @@ class CartActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item?.itemId) {
+        when (item.itemId) {
             android.R.id.home -> {
                 onBackPressed()
             }
@@ -94,9 +99,8 @@ class CartActivity : AppCompatActivity() {
     }
 
     private fun getTotalsAmount(): Int {
-        val totals = cartItems!!
+        return cartItems!!
             .map { it.quantity.times(it.price) }
             .sum()
-        return totals
     }
 }

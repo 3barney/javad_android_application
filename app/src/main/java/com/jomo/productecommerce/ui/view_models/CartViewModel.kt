@@ -47,16 +47,19 @@ class CartViewModel @Inject constructor(private val cartRepository: CartReposito
 
     fun addProductToCart(cart: Cart) {
         var productItem: Cart = cartRepository.findProductByName(cart.name)
-        if (productItem == null) {
-            return cartRepository.addProductToCart(cart)
-        } else {
-            productItem.quantity += 1
-            return cartRepository.updateCartItemd(productItem)
+        return when (productItem) {
+            null -> {
+                cartRepository.addProductToCart(cart)
+            }
+            else -> {
+                productItem.quantity += 1
+                cartRepository.updateCartItemd(productItem)
+            }
         }
     }
 
     fun disposeElements() {
-        if (null != disposableObserver && !disposableObserver.isDisposed) disposableObserver.dispose()
+        if (!disposableObserver.isDisposed) disposableObserver.dispose()
     }
 
     fun decreaseQuantity(cartItem: Cart) {
