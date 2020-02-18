@@ -64,14 +64,14 @@ Clone the project and import into Android Studio
     `git clone git@github.com:3barney/javad_android_application.git`
 
 To run the application ensure mobile device is connected.
-    1. Use android studio and run the application.
-    2. Using gradle
+    *1. Use android studio and run the application.
+    *2. Using gradle
     ~~~~
-        Navigate to root of project.
-        If using linux or mac execute
-            ```./gradlew installDebug```
-        on windows
-            ```gradlew installDebug```
+        *Navigate to root of project.
+        *If using linux or mac execute
+        *    ```./gradlew installDebug```
+        *on windows
+        *    ```gradlew installDebug```
     ~~~~
 
 
