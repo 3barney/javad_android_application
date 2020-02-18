@@ -1,11 +1,11 @@
 package com.jomo.productecommerce
 
 import android.graphics.PorterDuff
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -14,15 +14,15 @@ import com.jomo.productecommerce.ui.adapter.CartAdapter
 import com.jomo.productecommerce.ui.view_models.CartViewModel
 import com.jomo.productecommerce.ui.view_models.CartViewModelFactory
 import dagger.android.AndroidInjection
-import kotlinx.android.synthetic.main.activity_cart.*
 import javax.inject.Inject
+import kotlinx.android.synthetic.main.activity_cart.*
 
 class CartActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var cartViewModelFactory: CartViewModelFactory
-    lateinit var cartViewModel: CartViewModel
-    var cartItems: List<Cart>? = null
+    private lateinit var cartViewModelFactory: CartViewModelFactory
+    private lateinit var cartViewModel: CartViewModel
+    private var cartItems: List<Cart>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,9 +37,11 @@ class CartActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val upArrow = ContextCompat.getDrawable(this, R.drawable.abc_ic_ab_back_material)
-        upArrow?.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), PorterDuff.Mode.SRC_ATOP)
+        upArrow?.setColorFilter(
+            ContextCompat.getColor(this, R.color.colorPrimary),
+            PorterDuff.Mode.SRC_ATOP
+        )
         supportActionBar?.setHomeAsUpIndicator(upArrow)
-
     }
 
     override fun onStart() {
@@ -57,7 +59,7 @@ class CartActivity : AppCompatActivity() {
         cartViewModel.cartError().observe(
             this,
             Observer<String> {
-                Log.e("ERRRROR", "error ${it}")
+                Log.e("ERRRROR", "error $it")
             }
         )
     }
@@ -94,7 +96,7 @@ class CartActivity : AppCompatActivity() {
     private fun getTotalsAmount(): Int {
         val totals = cartItems!!
             .map { it.quantity.times(it.price) }
-            .sum();
-        return totals;
+            .sum()
+        return totals
     }
 }

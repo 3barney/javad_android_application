@@ -1,6 +1,11 @@
 package com.jomo.productecommerce.data.source
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Update
 import com.jomo.productecommerce.data.model.Cart
 import io.reactivex.Single
 
@@ -21,5 +26,4 @@ interface CartDao {
 
     @Query("SELECT * FROM cart WHERE name LIKE :search")
     fun findCartItemWithName(search: String): Cart
-
 }

@@ -5,20 +5,24 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.jomo.productecommerce.data.model.Cart
 import com.jomo.productecommerce.data.repository.CartRepository
-import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class CartViewModel @Inject constructor(private val cartRepository: CartRepository): ViewModel() {
+class CartViewModel @Inject constructor(private val cartRepository: CartRepository) : ViewModel() {
 
     private val result: MutableLiveData<List<Cart>> = MutableLiveData()
     private val error: MutableLiveData<String> = MutableLiveData()
     lateinit var disposableObserver: DisposableObserver<List<Cart>>
 
-    fun cartResult(): LiveData<List<Cart>> { return result }
-    fun cartError(): LiveData<String> { return error }
+    fun cartResult(): LiveData<List<Cart>> {
+        return result
+    }
+
+    fun cartError(): LiveData<String> {
+        return error
+    }
 
     fun loadCartItems() {
         disposableObserver = object : DisposableObserver<List<Cart>>() {
@@ -46,13 +50,13 @@ class CartViewModel @Inject constructor(private val cartRepository: CartReposito
         if (productItem == null) {
             return cartRepository.addProductToCart(cart)
         } else {
-            productItem.quantity += 1 ;
-            return cartRepository.updateCartItemd(productItem);
+            productItem.quantity += 1
+            return cartRepository.updateCartItemd(productItem)
         }
     }
 
     fun disposeElements() {
-        if(null != disposableObserver && !disposableObserver.isDisposed) disposableObserver.dispose()
+        if (null != disposableObserver && !disposableObserver.isDisposed) disposableObserver.dispose()
     }
 
     fun decreaseQuantity(cartItem: Cart) {
@@ -60,7 +64,7 @@ class CartViewModel @Inject constructor(private val cartRepository: CartReposito
             return cartRepository.deleteCartItem(cartItem)
         }
 
-        cartItem.quantity -= 1;
+        cartItem.quantity -= 1
         return cartRepository.updateCartItemd(cartItem)
     }
 
@@ -68,5 +72,4 @@ class CartViewModel @Inject constructor(private val cartRepository: CartReposito
         cartItem.quantity += 1
         return cartRepository.updateCartItemd(cartItem)
     }
-
 }

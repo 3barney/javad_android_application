@@ -1,11 +1,9 @@
 package com.jomo.productecommerce.data.repository
 
 import android.util.Log
-import androidx.databinding.ObservableField
 import com.jomo.productecommerce.data.model.Cart
 import com.jomo.productecommerce.data.source.CartDao
 import io.reactivex.Observable
-import io.reactivex.Single
 import javax.inject.Inject
 
 class CartRepository @Inject constructor(
@@ -13,7 +11,7 @@ class CartRepository @Inject constructor(
 ) {
 
     fun addProductToCart(cart: Cart) {
-        return cartDao.insertCartItem(cart);
+        return cartDao.insertCartItem(cart)
     }
 
     fun getCartItems(): Observable<List<Cart>> {
@@ -30,10 +28,10 @@ class CartRepository @Inject constructor(
     }
 
     fun updateCartItemd(cart: Cart) {
-        return cartDao.updateCartItem(cart);
+        return cartDao.updateCartItem(cart)
     }
 
     fun deleteCartItem(cart: Cart) {
-        return cartDao.deleteCartItem(cart);
+        return cartDao.deleteCartItem(cart)
     }
 }

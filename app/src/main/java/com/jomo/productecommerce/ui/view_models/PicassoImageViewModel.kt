@@ -21,10 +21,14 @@ class PicassoImageViewModel(context: Context, imageUrl: String) {
         productImage = ObservableField<Drawable>()
 
         bindableFieldTarget = BindableFieldTarget(productImage!!, context.resources)
-        Picasso.with(context).load(imageUrl).placeholder(R.drawable.ic_launcher_background).into(bindableFieldTarget)
+        Picasso.with(context).load(imageUrl).placeholder(R.drawable.ic_launcher_background)
+            .into(bindableFieldTarget)
     }
 
-    inner class BindableFieldTarget(private val observableField: ObservableField<Drawable>, private val resources: Resources): Target {
+    inner class BindableFieldTarget(
+        private val observableField: ObservableField<Drawable>,
+        private val resources: Resources
+    ) : Target {
         override fun onPrepareLoad(placeHolderDrawable: Drawable?) {
             observableField.set(placeHolderDrawable)
         }
@@ -36,6 +40,5 @@ class PicassoImageViewModel(context: Context, imageUrl: String) {
         override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
             observableField.set(BitmapDrawable(resources, bitmap))
         }
-
     }
 }

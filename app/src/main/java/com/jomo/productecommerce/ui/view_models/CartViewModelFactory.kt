@@ -7,13 +7,11 @@ import javax.inject.Inject
 
 class CartViewModelFactory @Inject constructor(
     private val cartViewModel: CartViewModel
-): ViewModelProvider.Factory {
+) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(CartViewModel::class.java!!)) {
             return cartViewModel as T
         }
         throw IllegalArgumentException("Unknown class name")
     }
-
-
 }

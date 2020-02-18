@@ -1,7 +1,6 @@
 package com.jomo.productecommerce.ui.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +19,7 @@ class CartAdapter(
     private val cartViewModel: CartViewModel
 ) : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
 
-    inner class ViewHolder constructor(itemView: View): RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val mBinding: CartProductItemBinding = DataBindingUtil.bind(itemView)!!
     }
 
@@ -36,7 +35,7 @@ class CartAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val cartItem = cartItems[position]
-        var cartModel = CartModel()
+        val cartModel = CartModel()
         cartModel.name = cartItem.name
         cartModel.price = cartItem.price
         cartModel.quantity = cartItem.quantity
@@ -44,7 +43,6 @@ class CartAdapter(
 
         val imageViewModel = PicassoImageViewModel(context, cartItem.img)
         cartModel.img = imageViewModel.productImage?.get()
-
 
         holder.mBinding.decreaseQuantity.setOnClickListener {
             cartViewModel.decreaseQuantity(cartItem)

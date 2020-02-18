@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import com.jomo.productecommerce.data.model.Cart
 
 @Database(entities = [Cart::class], version = 1, exportSchema = false)
-abstract class Database: RoomDatabase() {
+abstract class Database : RoomDatabase() {
 
     abstract fun cartDao(): CartDao
 }

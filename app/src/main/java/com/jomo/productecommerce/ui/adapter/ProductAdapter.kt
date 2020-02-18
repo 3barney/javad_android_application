@@ -19,13 +19,13 @@ class ProductAdapter(
     private val mContext: Context,
     private val productList: List<Product>,
     private val cartViewModel: CartViewModel
-):
-        RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
+) :
+    RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(mContext)
-        val view = inflater.inflate(R.layout.product_item_view, parent, false);
-        return ViewHolder(view);
+        val view = inflater.inflate(R.layout.product_item_view, parent, false)
+        return ViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -46,7 +46,8 @@ class ProductAdapter(
         holder.mBinding.executePendingBindings()
     }
 
-    inner class ViewHolder constructor(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener {
+    inner class ViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
         val mBinding: ProductItemViewBinding = DataBindingUtil.bind(itemView)!!
 
         init {
@@ -54,8 +55,8 @@ class ProductAdapter(
         }
 
         override fun onClick(view: View?) {
-            val itemName = mBinding.productName.text.toString();
-            lateinit var p: Product;
+            val itemName = mBinding.productName.text.toString()
+            lateinit var p: Product
 
             productList
                 .asSequence()

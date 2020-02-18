@@ -9,10 +9,10 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import javax.inject.Inject
 
-@Suppress("DEPRECATION")
 class MainApplication : Application(), HasActivityInjector {
 
-    @Inject lateinit var activityInjector: DispatchingAndroidInjector<Activity>;
+    @Inject
+    lateinit var activityInjector: DispatchingAndroidInjector<Activity>
 
     override fun onCreate() {
         super.onCreate()
