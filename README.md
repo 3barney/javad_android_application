@@ -69,14 +69,10 @@ To run the application ensure mobile device is connected.
     1. Use android studio and run the application.
     2. Using gradle
 
-    ~~~~
-        *Navigate to root of project.
-        *If using linux or mac execute
-        *    ```./gradlew installDebug```
-        *on windows
-        *    ```gradlew installDebug```
-    ~~~~
 
-
-Project can be run in two ways:
+        Navigate to root of project.
+        If using linux or mac execute
+            ```./gradlew installDebug```
+        on windows
+            ```gradlew installDebug```
 
