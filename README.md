@@ -1,4 +1,4 @@
-# Ecommerce application
+# Ecommerce application cart Mockup
 
 ## Goal
 
